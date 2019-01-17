@@ -9,7 +9,7 @@ The JSON-LD Context is served at: http://schema.geolink.org/schemaorg/time/jsonl
 
 ### 1. [OWL Time](http://www.w3.org/2006/time#)
 
-http://www.w3.org/2006/time#(http://www.w3.org/2006/time#)
+[http://www.w3.org/2006/time#](http://www.w3.org/2006/time#)
 
 Extend [schema:temporalCoverage](https://schema.org/temporalCoverage) to allow for any OWL Time representation.
 
