@@ -40,4 +40,5 @@ Extend [schema:temporalCoverage](https://schema.org/temporalCoverage) to allow f
 3. Add the temporal converage context file to the `@context`.
 4. Now you can begin to use OWL Time classes as a valid `schema:temporalCoverage`
 
+See: https://github.com/schemaorg/schemaorg/issues/1186#issuecomment-226838348
 
