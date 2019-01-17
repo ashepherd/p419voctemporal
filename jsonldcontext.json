@@ -1,0 +1,17 @@
+{
+  "@context":{
+    "@vocab": "http://schema.org/",
+    "time": "http://www.w3.org/2006/time#"
+  },
+  "@graph":[
+    {
+      "@id": "time:TemporalEntity"
+    },
+    {
+      "@id": "temporalCoverage",
+      "rangeIncludes": [
+        "time:TemporalEntity"
+      ]
+    }
+  ]
+}
