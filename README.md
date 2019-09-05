@@ -10,7 +10,7 @@ Vocabulary work on time for Project 418 follow on work (P419)
       * [Before Present](#before-present)
       * [Millions of Years](#millions-of-years)
   * [Durations](#durations)
-  * [Seasonality](#durations)
+  * [Seasonality](#seasonality)
 
 **schema.org Extensions for OWL Time** [http://geoschemas.org/contexts/temporal.jsonld](http://geoschemas.org/contexts/temporal.jsonld)
   
