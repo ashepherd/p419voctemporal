@@ -51,10 +51,12 @@ Instants in time are useful for describing a position in time where an event occ
 
 The Geoschemas context defines 2 geologic time scales:
 
-# Before Present #: http://schema.geoschemas.org/contexts/temporal#BeforePresent
+# Before Present #
+[http://schema.geoschemas.org/contexts/temporal#BeforePresent](http://schema.geoschemas.org/contexts/temporal#BeforePresent)
 Temporal position expressed numerically in years before January 1, 1950
 
-# Millions Of Years #: http://schema.geoschemas.org/contexts/temporal#MillionsOfYears
+# Millions Of Years #
+[http://schema.geoschemas.org/contexts/temporal#MillionsOfYears](http://schema.geoschemas.org/contexts/temporal#MillionsOfYears)
 Temporal position expressed numerically scaled in millions of years increasing backwards relative to 1950"
 
 To specify a Geologic Time Scale, we use an OWL Time Instant. The example below specifies 2 million years before present:
@@ -83,11 +85,7 @@ To specify a Geologic Time Scale, we use an OWL Time Instant. The example below 
 
 Sometimes, the temporal coverage of a Dataset is measured as a duration in time. For example, let's say the Dataset is the most recent data starting two weeks from the time the data is requested. Such a duration can be expressed as:
 
-<pre>:hasDuration [
-    rdf:type :Duration ;
-    :numericDuration "1"^^xsd:decimal ;
-    :unitType :unitDay ;
-  ] ;
+<pre>
 {
   "@context":  {
       "@vocab": "http://schema.org/",
