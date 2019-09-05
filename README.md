@@ -7,15 +7,17 @@ The JSON-LD Context is served at: http://schema.geolink.org/schemaorg/time/jsonl
 
 ## Extensions
 
-### 1. [OWL Time](http://www.w3.org/2006/time#)
-
 **Context:** [http://geoschemas.org/contexts/temporal.jsonld](http://geoschemas.org/contexts/temporal.jsonld)
+  
+### [OWL Time](http://www.w3.org/2006/time#)
 
 The [OWL Time](https://www.w3.org/TR/owl-time/) vocabulary defines useful ways for describing the temporal coverage. The temporalCoverage of a Dataset indicates the period of time that the contents of the dataset apply. This extension to schema:Dataset allows for the description of temporal coverages that cannot be described using a ISO 8601 formatted date (and time). Some examples of such coverages are geologic time scales, seasonal coverages across multiple years, or certain days of the week. The coverage is expressed as a time:TemporalEntity, typcially a time:Interval or a time:Instant.
 
-## Intervals
+![https://www.w3.org/TR/owl-time/](https://www.w3.org/TR/owl-time/images/TemporalEntity.png)
 
-### Simple Date Time Temporal Coverage ###
+### Intervals
+
+#### Simple Date Time Temporal Coverage
 
 To express an interval of time as the coverage for a [schema:Dataset](http://schema.org/Dataset), schema.org provides the [schema:temporalCoverage](http://schema.org/temporalCoverage) which allows for defining a coverage using ISO 
 Example: Expressing a time interval using a [time:TemporalEntity](https://www.w3.org/TR/owl-time/#time:TemporalEntity)
@@ -43,7 +45,71 @@ Example: Expressing a time interval using a [time:TemporalEntity](https://www.w3
 }
 ```
 
+### Instants
+
+Instants in time are useful for describing a position in time where an event occurred. For Datasets, the temporal coverage may be an instant instead of an interval for cases where all observations were made inn a single point in time or for observations in geologic time scales.
+
+The Geoschemas context defines 2 geologic time scales:
+
+# Before Present #: http://schema.geoschemas.org/contexts/temporal#BeforePresent
+Temporal position expressed numerically in years before January 1, 1950
+
+# Millions Of Years #: http://schema.geoschemas.org/contexts/temporal#MillionsOfYears
+Temporal position expressed numerically scaled in millions of years increasing backwards relative to 1950"
+
+To specify a Geologic Time Scale, we use an OWL Time Instant. The example below specifies 2 million years before present:
+
+<pre>
+{
+  "@context":  {
+      "@vocab": "http://schema.org/",
+      "time": "http://www.w3.org/2006/time#",
+      "geosci-time": "http://geoschemas.org/contexts/temporal.jsonld"
+   },
+  "@type": "Dataset",
+  ...
+  "geosci-time:temporalCoverage": {
+    "@type": "time:Instant",
+    "time:inTimePosition": {
+      "@type": "time:TimePosition",
+      <strong>"time:hasTRS": { "@id": "geosci-time:BeforePresent" },
+      "time:numericPosition": { "@value": 2000000, "@type": "xsd:decimal" }</strong>
+    }
+  }
+}
+</pre>
+
+### Durations
+
+Sometimes, the temporal coverage of a Dataset is measured as a duration in time. For example, let's say the Dataset is the most recent data starting two weeks from the time the data is requested. Such a duration can be expressed as:
+
+<pre>:hasDuration [
+    rdf:type :Duration ;
+    :numericDuration "1"^^xsd:decimal ;
+    :unitType :unitDay ;
+  ] ;
+{
+  "@context":  {
+      "@vocab": "http://schema.org/",
+      "time": "http://www.w3.org/2006/time#",
+      "geosci-time": "http://geoschemas.org/contexts/temporal.jsonld"
+   },
+  "@type": "Dataset",
+  ...
+  "geosci-time:temporalCoverage": {
+    "@type": "time:TemporalEntity",
+    "time:hasDuration": {
+      "@type": "time:Duration",
+      <strong>"time:unitType": { "@id": "time:weeks" },
+      "time:numericDuration": { "@value": 2, "@type": "xsd:decimal" }</strong>
+    }
+  }
+}
+</pre>
+
 ### Seasonal Coverage ###
+
+Seasonality should work when https://github.com/w3c/sdw/issues/1140 is completed. For now, the original idea for describing 
 
 A dataset that collected measurements every Summer between 2012 and 2015. For discovery, if a data searcher was more interested in data collected during the Winter, a dataset with measurements in the summer can be excluded to improve precision and recall. Conversely, searchers looking for data in the Summer months is enabled.
 
