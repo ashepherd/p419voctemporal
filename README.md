@@ -29,11 +29,14 @@ To express an interval of time as the coverage for a [schema:Dataset](http://sch
 Example: Expressing a time interval using a [time:TemporalEntity](https://www.w3.org/TR/owl-time/#time:TemporalEntity)
 ```
 {
-  "@context":  {
+  "@context":  [
+    {
       "@vocab": "http://schema.org/",
-      "time": "http://www.w3.org/2006/time#",
-      "geosci-time": "http://geoschemas.org/contexts/temporal.jsonld"
-   },
+      "time": "http://www.w3.org/2006/time",
+      "geosci-time": "http://schema.geoschemas.org/contexts/temporal#"
+    },
+    "http://geoschemas.org/contexts/temporal.jsonld"
+  ],
   "@type": "Dataset",
   ...
   "temporalCoverage": {"@value": "2019-03-31T00:00:00Z/2019-04-30T06:00:00Z"},
@@ -74,11 +77,14 @@ To specify a Geologic Time Scale, we use an OWL Time Instant. The example below 
 
 <pre>
 {
-  "@context":  {
+  "@context":  [
+    {
       "@vocab": "http://schema.org/",
-      "time": "http://www.w3.org/2006/time#",
-      "geosci-time": "http://geoschemas.org/contexts/temporal.jsonld"
-   },
+      "time": "http://www.w3.org/2006/time",
+      "geosci-time": "http://schema.geoschemas.org/contexts/temporal#"
+    },
+    "http://geoschemas.org/contexts/temporal.jsonld"
+  ],
   "@type": "Dataset",
   ...
   "geosci-time:temporalCoverage": {
@@ -98,11 +104,14 @@ Sometimes, the temporal coverage of a Dataset is measured as a duration in time.
 
 <pre>
 {
-  "@context":  {
+  "@context":  [
+    {
       "@vocab": "http://schema.org/",
-      "time": "http://www.w3.org/2006/time#",
-      "geosci-time": "http://geoschemas.org/contexts/temporal.jsonld"
-   },
+      "time": "http://www.w3.org/2006/time",
+      "geosci-time": "http://schema.geoschemas.org/contexts/temporal#"
+    },
+    "http://geoschemas.org/contexts/temporal.jsonld"
+  ],
   "@type": "Dataset",
   ...
   "geosci-time:temporalCoverage": {
@@ -139,11 +148,14 @@ Temporal Coverage: 2012-06-30 to 2015-09-04
 Then, we use the [time:intervalContains](https://www.w3.org/TR/owl-time/#time:intervalContains) property to describe the begin and end date of each year for this full temporal coverage.
 ```
 {
-  "@context":  {
+  "@context":  [
+    {
       "@vocab": "http://schema.org/",
-      "time": "http://www.w3.org/2006/time#",
-      "geosci-time": "http://geoschemas.org/contexts/temporal.jsonld"
-   },
+      "time": "http://www.w3.org/2006/time",
+      "geosci-time": "http://schema.geoschemas.org/contexts/temporal#"
+    },
+    "http://geoschemas.org/contexts/temporal.jsonld"
+  ],
   "@type": "Dataset",
   ...
   "temporalCoverage": {"@value": "2012-06-30/2015-09-04"},
